@@ -1,0 +1,24 @@
+﻿@model IndexData
+@using Hotels.Models.ViewModels
+@using Hotels.Models.SystemModels
+@{
+    ViewData["Title"] = "Hotels";
+}
+<div class="row">
+    @Html.Partial("_SearchFilters", Model)
+
+    <hr />
+    <div class="row" id="results">
+        <h3 class="text-warning">Search results: (@Model.Offers.Hotels.Count()) <small><i class="text-muted pull-right">Click on any hotel below to see the details</i></small></h3>
+    </div>
+
+    @if (Model.Offers.Hotels.Count() >= 1)
+    {
+
+        @foreach (Hotel hotel in Model.Offers.Hotels)
+        {
+            @Html.Partial("_HotelRecord", hotel)
+        }
+    }
+
+</div>
